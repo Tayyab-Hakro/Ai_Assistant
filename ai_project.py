@@ -3,6 +3,8 @@ import speech_recognition as sr
 import pywhatkit
 import wikipedia
 import datetime
+import webbrowser
+
 
 r = sr.Recognizer()
 
@@ -44,6 +46,11 @@ def command():
             elif 'do you know tayyab' in my_text:
                 info = 'Tayyab is a loser and he wants to become a billionaire.'
                 speak(info)
+            elif 'search image of' in my_text:
+                query = my_text.replace('search image of', '')
+                speak('Searching images of ' + query)
+                webbrowser.open(f"https://www.google.com/search?tbm=isch&q={query}")
+
 
     except Exception as e:
         print(f"Error in capturing microphone: {e}")
